@@ -1,5 +1,5 @@
 function pingApp() {
-  // Pings app url, replace with your app's url on line 12. Recommended trigger: every 15 mintues
+  // Pings app url, replace with your app's url on line 12. Recommended trigger: every 15 minutes
   var d = new Date();
   var hours = d.getHours();
   var minutes = d.getMinutes();
@@ -17,7 +17,7 @@ function autoclean() {
   // Cleans the spreadsheet, trigger as often as you like
   var ss = SpreadsheetApp.openById('YOUR_SPREADSHEET_ID')
   var sheet = ss.getSheets()[0];
-  var start = 2
+  var start = 1
   var end = ss.getLastRow();
   sheet.deleteRows(start, end);
   SpreadsheetApp.getActiveSheet().getRange('B1').setValue('1');
