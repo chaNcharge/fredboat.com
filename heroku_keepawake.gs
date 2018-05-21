@@ -1,5 +1,19 @@
+/*
+How to set up and use this script:
+1. Create a new Google Sheets
+2. Set cell B1 to 1
+3. Tools > Script Editor
+4. Copy this script into the editor
+5. Add your heroku app name to YOUR_APP_NAME.
+6. Add your spreadsheet ID to YOUR_SPREADSHEET_ID
+  - Look at the spreadsheet url. If your url is like this: https://docs.google.com/spreadsheets/d/abc1234/, then the ID is abc1234.
+7. Edit > Current project's triggers
+8. Add your triggers for each function (time based events).
+9. Save and run each function to make sure they all work. If there's a 401 error, ignore it.
+*/
+
 function pingApp() {
-  // Pings app url, replace with your app's url on line 12. Recommended trigger: every 15 minutes
+  // Pings app url, replace with your app's url under YOUR_APP_NAME. Recommended trigger: every 15 minutes
   var d = new Date();
   var hours = d.getHours();
   var minutes = d.getMinutes();
