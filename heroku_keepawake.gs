@@ -34,5 +34,5 @@ function autoclean() {
   var start = 1
   var end = ss.getLastRow();
   sheet.deleteRows(start, end);
-  SpreadsheetApp.getActiveSheet().getRange('B1').setValue('1');
+  ss.getRange('B1').setValue('1');
 }
