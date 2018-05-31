@@ -61,8 +61,11 @@ git commit -am "First commit!"
 git push heroku master
 ```
 
-Now the final part is to enable the web worker.
+Enable the web dyno:
 `heroku ps:scale web=1`
+
+On the free plan, Heroku will put the web dyno to sleep after 30 minutes of inactivity, which results in FredBoat shutting down. There's many different ways to prevent Heroku from putting FredBoat to sleep. 
+The easiest way of keeping the bot awake is by using [Kaffeine](http://kaffeine.herokuapp.com/)
 
 ## Cache database
 Make sure you're working in a different folder for this.
@@ -97,6 +100,6 @@ Hosting FredBoat this way is fine, but there are some downsides using Heroku to 
 
 1. On the free and hobby plans, Heroku allows a maximum of 24 hours uptime, with a delay up to 2 to 3 hours. This means that your FredBoat restarts around the time you deployed the code. This can differ up to 4 hours.
 2. Heroku uses an ephemeral filesystem. This means that every change that occurs after you pushed your files isn't saved. The downside of this is that when FredBoat restarts, no songs are reloaded. Also, all the errors that aren't sent to the Sentry are lost too.
-3. It's possible to use the local file playing, it's limited however due to the maximum file size of 500mb per app. The project itself uses up to 200mb. You can experience slower boot times when exceeding 400mb.
+3. It's possible to play local files; however, it's limited due to the maximum file size of 500mb per app. The project itself uses up to 200mb. You can experience slower boot times when exceeding 400mb.
 4. You only get 550 hours of uptime per month on the free plans without a credit card. If you verify your Heroku account with a credit card, you get 1000 hours per month, which is more than enough to keep FredBoat awake 24/7.
-5. On the free plan, Heroku will put FredBoat to sleep after 30 minutes of inactivity. There's many different ways to prevent Heroku from putting FredBoat to sleep. The easiest way of keeping the bot awake is by using [Kaffeine](http://kaffeine.herokuapp.com/) or creating a Google Apps Script if you want more control over it. You can create your own or use this [script](https://github.com/FredBoat/fredboat.com/blob/master/heroku_keepawake.gs) and add it to a new Google Sheet. If you use this script, make sure to read the comments and add your Heroku App URL and Sheet ID (found in the URL of your Sheet). The advantage to using this script is that it keeps FredBoat on for 17 hours a day, which complies with the consideration above.
+5. If you don't want to use Kaffeine, you can also create a Google Apps Script if you want more control over when FredBoat sleeps. You can create your own or use this [script](https://github.com/FredBoat/fredboat.com/blob/master/heroku_keepawake.gs) and add it to a new Google Sheet. If you use this script, make sure to read the comments and add your Heroku App URL and Sheet ID (found in the URL of your Sheet). The advantage to using this script over Kaffeine is that it keeps FredBoat on for 17 hours a day, which takes care of the consideration above. 
