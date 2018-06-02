@@ -33,6 +33,6 @@ function autoclean() {
   var sheet = ss.getSheets()[0];
   var start = 1
   var end = ss.getLastRow();
-  sheet.deleteRows(start, end);
+  sheet.deleteRows(start, end - 1);
   ss.getRange('B1').setValue('1');
 }
