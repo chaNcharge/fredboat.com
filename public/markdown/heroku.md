@@ -22,7 +22,7 @@ Only to use the `psql` client to add the hstore addon on the remote database. Co
 
 Should look like this:
 
-[![Folder with files](https://imgur.com/7ClL7mJ.png)](https://imgur.com/7ClL7mJ.png)  
+![New folder structure](https://i.imgur.com/C0iM37E.png "File Structure")
 
 ## Instructions to host Fredboat in Heroku
 The instruction assumes a fully working config is already made. Only the necessary changes are included.
@@ -35,7 +35,7 @@ heroku addons:create heroku-postgresql:hobby-dev
 echo 'create extension hstore' | heroku pg:psql
 heroku buildpacks:set heroku/jvm
 ```
-Replace fredsboatmainapp with a name you like, lowercase only. Optionally you change the region to `us` if that's closer to your servers.
+Replace `fredsboatmainapp` with a name you like, lowercase only. Optionally you change the region to `us` if that's closer to your servers.
 
 In the fredboat.yaml file make sure to set the host to the URL you receive from this command:
 `heroku info -s | grep web_url | cut -d= -f2`
@@ -68,15 +68,14 @@ On the free plan, Heroku will put the web dyno to sleep after 30 minutes of inac
 The easiest way of keeping the bot awake is by using [Kaffeine](http://kaffeine.herokuapp.com/)
 
 ## Cache database
-While you're in the main app directory, create a new subdirectory for the cache database.
-Change your working directory to the cache directory and type the following commands into git bash:
+Change your working directory to `cacheapp` and type the following commands into git bash:
 ```
 git init
 heroku apps:create fredsboatcacheapp --region eu
 heroku addons:create heroku-postgresql:hobby-dev
 echo 'create extension hstore' | heroku pg:psql
 ```
-Again, replace fredsboatmainapp with a name you like, lowercase only. Change the region to `us` if that's closer to your servers.
+Again, replace fredsboatcacheapp with a name you like, lowercase only. Change the region to `us` if that's closer to your servers.
 
 Don't forget to add the cache database to your quarterdeck.yaml.
 
