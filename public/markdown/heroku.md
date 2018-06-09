@@ -77,6 +77,7 @@ heroku addons:create heroku-postgresql:hobby-dev
 echo 'create extension hstore' | heroku pg:psql
 ```
 Again, replace fredsboatmainapp with a name you like, lowercase only. Change the region to `us` if that's closer to your servers.
+
 Don't forget to add the cache database to your quarterdeck.yaml.
 
 Now go back to your main app folder. Start git bash one more time and type the following command:
