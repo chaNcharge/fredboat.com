@@ -68,15 +68,15 @@ On the free plan, Heroku will put the web dyno to sleep after 30 minutes of inac
 The easiest way of keeping the bot awake is by using [Kaffeine](http://kaffeine.herokuapp.com/)
 
 ## Cache database
-Make sure you're working in a different folder for this.
-It's recommended to use the same region where the mainapp is located.
-Type the following commands into git bash:
+While you're in the main app directory, create a new subdirectory for the cache database.
+Change your working directory to the cache directory and type the following commands into git bash:
 ```
 git init
 heroku apps:create fredsboatcacheapp --region eu
 heroku addons:create heroku-postgresql:hobby-dev
 echo 'create extension hstore' | heroku pg:psql
 ```
+Again, replace fredsboatmainapp with a name you like, lowercase only. Change the region to `us` if that's closer to your servers.
 Don't forget to add the cache database to your quarterdeck.yaml.
 
 Now go back to your main app folder. Start git bash one more time and type the following command:
