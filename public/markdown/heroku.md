@@ -47,6 +47,7 @@ To get the main database jdbcUrl you can do the following command:
 Do note that the format is not correct! 
 
 Connection info string example:
+
 `dbname=deqg8ktnfnlapjpj host=ec2-54-75-227-92.eu-west-1.compute.amazonaws.com port=5432 user=akkoctcncribcj password=8184c021c8c25fe0fb7a0eb1abff842501f9aa80705cac8996e831249f3eccbc` 
 
 Plug in the values from the connection info string to jdbc format. Replace the user and password with your DB's user and password:
