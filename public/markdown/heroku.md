@@ -46,12 +46,12 @@ To get the main database jdbcUrl you can do the following command:
 `heroku pg:credentials:url`
 Do note that the format is not correct! 
 
-Example:
-`postgres://akkoctcncribcj:8184c021c8c25fe0fb7a0eb1abff842501f9aa80705cac8996e831249f3eccbc@ec2-54-75-227-92.eu-west-1.compute.amazonaws.com:5432/deqg8ktnfnlapjpj` 
+Connection info string example:
+`dbname=deqg8ktnfnlapjpj host=ec2-54-75-227-92.eu-west-1.compute.amazonaws.com port=5432 user=akkoctcncribcj password=8184c021c8c25fe0fb7a0eb1abff842501f9aa80705cac8996e831249f3eccbc` 
 
-Which needs to be transformed into this format:
+Plug in the values from the connection info string to jdbc format. Replace the user and password with your DB's user and password:
 
-`jdbc:postgresql://ec2-54-75-227-92.eu-west-1.compute.amazonaws.com:5432/deqg8ktnfnlapj?user=akkoctcncribcj&password=8184c021c8c25fe0fb7a0eb1abff842501f9aa80705cac8996e831249f3eccbc`
+`jdbc:postgresql://host:port/dbname?user=akkoctcncribcj&password=8184c021c8c25fe0fb7a0eb1abff842501f9aa80705cac8996e831249f3eccbc`
 
 Now all the files are ready and it's time to update your app with the new files!
 Type the following commands to push changes:
@@ -100,6 +100,6 @@ Hosting FredBoat this way is fine, but there are some downsides using Heroku to 
 
 1. On the free and hobby plans, Heroku allows a maximum of 24 hours uptime, with a delay up to 2 to 3 hours. This means that your FredBoat restarts around the time you deployed the code. This can differ up to 4 hours.
 2. Heroku uses an ephemeral filesystem. This means that every change that occurs after you pushed your files isn't saved. The downside of this is that when FredBoat restarts, no songs are reloaded. Also, all the errors that aren't sent to the Sentry are lost too.
-3. It's possible to play local files; however, it's limited due to the maximum file size of 500mb per app. The project itself uses up to 200mb. You can experience slower boot times when exceeding 400mb.
+3. It's possible to play local files; however, it's limited due to the maximum file size of 500MiB per app. The project itself uses up to 200MiB. You can experience slower boot times when exceeding 400MiB.
 4. You only get 550 hours of uptime per month on the free plans without a credit card. If you verify your Heroku account with a credit card, you get 1000 hours per month, which is more than enough to keep FredBoat awake 24/7.
 5. If you don't want to use Kaffeine, you can also create a Google Apps Script if you want more control over when FredBoat sleeps. You can create your own or use this [script](https://github.com/FredBoat/fredboat.com/blob/master/heroku_keepawake.gs) and add it to a new Google Sheet. If you use this script, make sure to read the comments and add your Heroku App URL and Sheet ID (found in the URL of your Sheet). The advantage to using this script over Kaffeine is that it keeps FredBoat on for 17 hours a day, which takes care of the consideration above. 
