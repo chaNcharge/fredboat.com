@@ -13,12 +13,13 @@ Only to use the `psql` client to add the hstore addon on the remote database. Co
 4. A [Heroku](https://www.heroku.com/) account.
 
 5. A folder that contains the following files:
+- `cacheapp` (folder)
 - `FredBoat.jar`
 - `FredBoat.yaml`
-- [`Procfile`](https://github.com/FredBoat/fredboat.com/blob/master/public/Procfile)
+- [`Procfile`](https://fredboat.com/Procfile)
 - `Quarterdeck.jar`
 - `quarterdeck.yaml`
-- [`system.properties`](https://github.com/FredBoat/fredboat.com/blob/master/system.properties)
+- [`system.properties`](https://fredboat.com/system.properties)
 
 Should look like this:
 
@@ -103,4 +104,4 @@ Hosting FredBoat this way is fine, but there are some downsides using Heroku to 
 2. Heroku uses an ephemeral filesystem. This means that every change that occurs after you pushed your files isn't saved. The downside of this is that when FredBoat restarts, no songs are reloaded. Also, all the errors that aren't sent to the Sentry are lost too.
 3. It's possible to play local files; however, it's limited due to the maximum file size of 500MiB per app. The project itself uses up to 200MiB. You can experience slower boot times when exceeding 400MiB.
 4. You only get 550 hours of uptime per month on the free plans without a credit card. If you verify your Heroku account with a credit card, you get 1000 hours per month, which is more than enough to keep FredBoat awake 24/7.
-5. If you don't want to use Kaffeine, you can also create a Google Apps Script if you want more control over when FredBoat sleeps. You can create your own or use this [script](https://github.com/FredBoat/fredboat.com/blob/master/public/heroku_keepawake.gs) and add it to a new Google Sheet. If you use this script, make sure to read the comments and add your Heroku App URL and Sheet ID (found in the URL of your Sheet). The advantage to using this script over Kaffeine is that it keeps FredBoat on for 17 hours a day, which takes care of the consideration above. 
+5. If you don't want to use Kaffeine, you can also create a Google Apps Script if you want more control over when FredBoat sleeps. You can create your own or use this [script](https://fredboat.com/heroku_keepawake.gs) and add it to a new Google Sheet. If you use this script, make sure to read the comments and add your Heroku App URL and Sheet ID (found in the URL of your Sheet). The advantage to using this script over Kaffeine is that it keeps FredBoat on for 17 hours a day, which takes care of the consideration above. 
